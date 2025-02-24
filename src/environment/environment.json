@@ -1,0 +1,14 @@
+{
+  "development": {
+    "PORT": 9000,
+    "MONGODB_URI": "mongodb+srv://priyankakri8893:8DX39VAJBvKPQmX0@priyankakumari.uvh8zli.mongodb.net/nodejs_task",
+    "secret_token": "itissecrettoken",
+    "crypto_secret_key": "nodejs_taskcryptosecretkey"
+  },
+  "prod": {
+    "PORT": 9000,
+    "MONGODB_URI": "mongodb+srv://priyankakri8893:8DX39VAJBvKPQmX0@priyankakumari.uvh8zli.mongodb.net/nodejs_task",
+    "secret_token": "itissecrettoken",
+    "crypto_secret_key": "nodejs_taskcryptosecretkey"
+  }
+}

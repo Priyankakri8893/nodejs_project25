@@ -1,0 +1,6 @@
+question,type,categories,options,correctAnswer
+What is 2 + 2?,multiple-choice,"Mathematics,Science","2,3,4,5",4
+Explain gravity.,essay,Science,,
+Who wrote 'Hamlet'?,short-answer,Mathematics,,William Shakespeare
+What is the capital of France?,multiple-choice,History,"Paris,London,Rome,Berlin",Paris
+Summarize the theory of relativity.,essay,History,,
