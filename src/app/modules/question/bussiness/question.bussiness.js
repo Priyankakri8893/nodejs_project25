@@ -4,6 +4,7 @@ const { isValid } = require("../../../middleware/validator.middleware");
 const { Question } = require("../models/question.model");
 const { Category } = require("../../categories/models/categories.model");
 const csvToJson = require("csv-file-to-json");
+const fs = require("fs").promises;
 
 const addQuestion = async (user, body) => {
   if (!body?.questionList?.length) throw "questionList is empty"
@@ -66,27 +67,43 @@ const uploadQuestions = async (file) => {
 
     if (!questionsArray.length) throw new Error("CSV file is empty");
 
-    for (const row of questionsArray) {
-      const { question, type, categories, options, correctAnswer } = row;
+    const allCategories = [
+      ...new Set(questionsArray.flatMap((row) => (row.categories ? row.categories.split(",") : []))),
+    ];
 
-      if (!question) {
-        console.error("Skipping row: Question is required");
-        continue;
+    const categoryData = await Category.find({ name: { $in: allCategories } }).select("_id name");
+    const categoryMap = categoryData.reduce((acc, category) => {
+      acc[category.name] = category._id;
+      return acc;
+    }, {});
+    const chunkSize = 200;
+    for (let i = 0; i < questionsArray.length; i += chunkSize) {
+      const chunk = questionsArray.slice(i, i + chunkSize);
+      const bulkOperations = chunk
+        .filter((row) => row.question)
+        .map((row) => ({
+          updateOne: {
+            filter: { question: row.question },
+            update: {
+              $set: {
+                question: row.question,
+                type: row.type,
+                categories: (row.categories ? row.categories.split(",") : [])
+                  .map((cat) => categoryMap[cat])
+                  .filter(Boolean),
+                options: row.options ? row.options.split(",") : [],
+                correctAnswer: row.correctAnswer || "",
+              },
+            },
+            upsert: true,
+          },
+        }));
+
+      if (bulkOperations.length) {
+        await Question.bulkWrite(bulkOperations, { ordered: false });
       }
-
-      const categoryDocs = await Category.find({ name: { $in: categories.split(",") } }).select("_id");
-
-      const newQuestion = new Question({
-        question,
-        type,
-        categories: categoryDocs.map((cat) => cat._id),
-        options: options ? options.split(",") : [],
-        correctAnswer: correctAnswer || "",
-      });
-
-      await newQuestion.save();
     }
-
+    await fs.unlink(file.path);
     return { msg: "Questions uploaded successfully" };
   } catch (error) {
     console.error("Error uploading questions:", error.message);
