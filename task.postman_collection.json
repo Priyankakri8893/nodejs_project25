@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "8fc218d9-1442-44f3-b887-cd1b8f781b40",
+		"name": "task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39110322"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"teacher Doe\",\r\n  \"email\": \"tanyamanifestation88@gmail.com\",\r\n  \"password\": \"\",\r\n  \"roleId\": 1 // 1 or 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyOTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"priyankakri8893@gmail.com\",\r\n    \"otp\": 1786\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/user/verifyOTP",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"user",
+								"verifyOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tanyamanifestation88@gmail.com\",\r\n    \"password\": \"Demo@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2M1ZWM2ODJhN2QyMDA2NTM2ZGU2ZDUiLCJyb2xlSWQiOjEsImlhdCI6MTc0MTAyNTMzOX0.hbaiYSEYA9AD2bFnafvDGB_Yt9bRPr6XHyE9-ZZss14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjYWU4MmQ2YjdlMzk3YTA1NDdiMzIiLCJyb2xlSWQiOjAsImlhdCI6MTc0MDQxODk5NH0.W74Vc30kGCTwPHRSJxR0as4vbDJW6cRLbvXJfN3HSzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "werwer",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tanyamanifestation88@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "profile",
+									"type": "file",
+									"src": "/E:/image/download (1).jfif"
+								},
+								{
+									"key": "password",
+									"value": "Demo@1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/user/editProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"user",
+								"editProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "addCategories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2M1ZWM2ODJhN2QyMDA2NTM2ZGU2ZDUiLCJyb2xlSWQiOjEsImlhdCI6MTc0MTAyODk3MH0.O5-UlGPbW7_M6URK9MXCA1GKhoa0LtfnemvQi15n3aM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categories\": [\r\n        {\r\n            \"name\": \"Science\"\r\n        },\r\n        {\r\n            \"name\": \"Mathematics1\"\r\n        },\r\n        {\r\n            \"name\": \"History\"\r\n        },\r\n        {\r\n            \"name\": \"Technology1\"\r\n        },\r\n        {\r\n            \"name\": \"Literature\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/category/addCategories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"category",
+								"addCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjYmYzNWQ2YjdlMzk3YTA1NDgwMWYiLCJyb2xlSWQiOjEsImlhdCI6MTc0MDQyMzA1Nn0.rH-2Pxo9nKNymjIDAfS9PrmrK275p1MZglPLtOQmdnE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/category/getCategories?key=&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"category",
+								"getCategories"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question",
+			"item": [
+				{
+					"name": "addQuestion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjYmYzNWQ2YjdlMzk3YTA1NDgwMWYiLCJyb2xlSWQiOjEsImlhdCI6MTc0MDQyMzA1Nn0.rH-2Pxo9nKNymjIDAfS9PrmrK275p1MZglPLtOQmdnE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"questionList\": [\r\n        {\r\n            \"question\": \"What is the capital of France?\",\r\n            \"type\": \"multiple-choice\",\r\n            \"categories\": [\r\n                \"67bcc02e3286c20209eef1ea\"\r\n            ],\r\n            \"options\": [\r\n                \"Berlin\",\r\n                \"Madrid\",\r\n                \"Paris\",\r\n                \"Rome\"\r\n            ],\r\n            \"correctAnswer\": \"Paris\"\r\n        },\r\n        {\r\n            \"question\": \"Solve: 5 + 3 × 2\",\r\n            \"type\": \"short-answer\",\r\n            \"categories\": [\r\n                \"67bcc02e3286c20209eef1ea\",\r\n                \"67bcc02e3286c20209eef1e9\"\r\n            ],\r\n            \"options\": [],\r\n            \"correctAnswer\": \"11\"\r\n        },\r\n        {\r\n            \"question\": \"Explain Newton's First Law of Motion.\",\r\n            \"type\": \"essay\",\r\n            \"categories\": [\r\n                \"67bcc02e3286c20209eef1e9\",\r\n                \"67bcc02e3286c20209eef1ea\"\r\n            ]\r\n        },\r\n        {\r\n            \"question\": \"Which element has the chemical symbol 'O'?\",\r\n            \"type\": \"multiple-choice\",\r\n            \"categories\": [\r\n                \"67bcc02e3286c20209eef1ed\"\r\n            ],\r\n            \"options\": [\r\n                \"Oxygen\",\r\n                \"Osmium\",\r\n                \"Gold\",\r\n                \"Silver\"\r\n            ],\r\n            \"correctAnswer\": \"Oxygen\"\r\n        },\r\n        {\r\n            \"question\": \"Write a short paragraph about the importance of recycling.\",\r\n            \"type\": \"essay\",\r\n            \"categories\": [\r\n                \"67bcc02e3286c20209eef1ec\",\r\n                \"67bcc02e3286c20209eef1ed\",\r\n                \"67bcc02e3286c20209eef1ea\",\r\n                \"67bcc02e3286c20209eef1e9\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/que/addQuestion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"que",
+								"addQuestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "questionList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjYmYzNWQ2YjdlMzk3YTA1NDgwMWYiLCJyb2xlSWQiOjEsImlhdCI6MTc0MDQyMzA1Nn0.rH-2Pxo9nKNymjIDAfS9PrmrK275p1MZglPLtOQmdnE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/que/questionList?categoryWiseGroup=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"que",
+								"questionList"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "sci",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "essay",
+									"disabled": true
+								},
+								{
+									"key": "categorieId",
+									"value": "67bcc02e3286c20209eef1e9",
+									"disabled": true
+								},
+								{
+									"key": "categoryWiseGroup",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadQuestions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjYmYzNWQ2YjdlMzk3YTA1NDgwMWYiLCJyb2xlSWQiOjEsImlhdCI6MTc0MDQyMzA1Nn0.rH-2Pxo9nKNymjIDAfS9PrmrK275p1MZglPLtOQmdnE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/que/uploadQuestions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"que",
+								"uploadQuestions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
