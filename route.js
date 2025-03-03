@@ -1,17 +1,12 @@
-const User_routes = require("./src/app/modules/user/routes/user.route");
-const Question_routes = require("./src/app/modules/question/routes/question.route");
-const Category_routes = require("./src/app/modules/categories/routes/categories.route");
+const UserRouteHandler = require("./src/app/modules/user/routes/UserRouteHandler");
+const QuestionRouteHandler = require("./src/app/modules/question/routes/QuestionRouteHandler");
+const CategoryRouteHandler = require("./src/app/modules/categories/routes/CategoryRouteHandler");
+const Routes = require("./src/app/helpers/Routes");  
 
-//All modules path and path-handler array
-module.exports = [
-  {
-    path: "/api/user",
-    handler: User_routes,
-  }, {
-    path: "/api/que",
-    handler: Question_routes,
-  }, {
-    path: "/api/category",
-    handler: Category_routes,
-  },
-];
+const routeHandler = new Routes();
+
+routeHandler.addRoute("/api/user", UserRouteHandler.getRouter());
+routeHandler.addRoute("/api/que", QuestionRouteHandler.getRouter());
+routeHandler.addRoute("/api/category", CategoryRouteHandler.getRouter());
+
+module.exports = routeHandler.getRoutes();
