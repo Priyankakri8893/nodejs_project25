@@ -77,32 +77,28 @@
 // };
 
 const nodemailer = require("nodemailer");
-
 class EmailService {
-  constructor(smtpConfig = null) {
-    // Default Gmail SMTP settings if no configuration is passed
-    this.smtpConfig = smtpConfig || {
+  constructor() {
+    this.smtpConfig = {
       host: "smtp.gmail.com",
       port: 587,
-      secure: false, // true for port 465, false for other ports
+      secure: false,
       auth: {
-        user: "priyankakridemo93@gmail.com",  // Add your email here or in environment variables
-        pass: "ozwb zicp cbny bpqx",  // Add your email password here or in environment variables
+        user: "priyankakridemo93@gmail.com",
+        pass: "ozwb zicp cbny bpqx",
       },
     };
 
-    // Create the transporter with the provided or default configuration
     this.transporter = nodemailer.createTransport(this.smtpConfig);
   }
 
-  // Method to send OTP email
   async emailOtp(email, smsBody, otp) {
     try {
       const info = await this.transporter.sendMail({
-        from: '"OTP Service" <no-reply@example.com>', // sender address (You can change the sender)
-        to: email, // list of receivers
-        subject: "Otp for email verification", // Subject line
-        text: smsBody, // plain text body
+        from: '"OTP Service" <no-reply@example.com>',
+        to: email,
+        subject: "Otp for email verification",
+        text: smsBody,
         html: `<!DOCTYPE html>
 <html>
 <head>
