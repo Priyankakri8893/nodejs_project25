@@ -32,7 +32,7 @@ class UserService {
     body.otp = ciphertext;
     body.otpDate = newDate;
 
-    await this.UserModel.save(body);
+    await this.UserModel.findOneAndUpdate({ email: body.email }, { $set: body }, { upsert: true });
 
     return {
       msg: "user created successfully",

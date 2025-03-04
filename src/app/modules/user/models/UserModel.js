@@ -47,6 +47,10 @@ class UserModel {
     return await this.User.findByIdAndUpdate(query, update, options);
   }
 
+  async findOneAndUpdate(query, update, options) {
+    return await this.User.findOneAndUpdate(query, update, options);
+  }
+
   static decryptPassword(encryptedPassword) {
     const bytes = CryptoJS.AES.decrypt(
       encryptedPassword,

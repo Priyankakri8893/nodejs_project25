@@ -26,7 +26,7 @@ class UserRouteHandler {
     this.router.post("/verifyOTP", wrapAsync(UserController.verifyOTP));
     this.router.post("/login", wrapAsync(UserController.login));
     this.router.get("/profile", AuthMiddleware.authenticate, wrapAsync(UserController.profile));
-    this.router.put("/editProfile", AuthMiddleware.authenticate, upload.single("file"), wrapAsync(UserController.editProfile));
+    this.router.patch("/editProfile", AuthMiddleware.authenticate, upload.single("file"), wrapAsync(UserController.editProfile));
   }
 
   getRouter() {
